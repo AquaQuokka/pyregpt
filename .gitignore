@@ -1,0 +1,9 @@
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.ini
+.env
+test.py
+channels/*.json
+!channels/null.json
