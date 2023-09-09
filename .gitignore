@@ -7,3 +7,4 @@ __pycache__/
 test.py
 channels/*.json
 !channels/null.json
+old/

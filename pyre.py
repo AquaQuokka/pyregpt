@@ -6,16 +6,15 @@ import json
 
 dotenv.load_dotenv(".env")
 api_key = os.getenv("key")
-convo = os.getenv("channel")
 
 @click.command()
-@click.option('-c', help="Selects the conversation to use. E.g. 'main' resolves to './channels/main.json'")
+@click.option('-c', help="Selects the conversation to use. E.g. 'foo' resolves to './channels/foo.json'")
 @click.option('-q', help="The query to send to the server.")
 def cli(c, q):
     msgp = []
 
     if c is None:
-        c = "null"
+        c = "null.json"
 
     with open(f"./channels/{c}", "r") as f:
         file_content = f.read()
@@ -35,7 +34,7 @@ def cli(c, q):
 
         msgp.append({"role": "assistant", "content": res})
 
-        if c != "null":
+        if c != "null.json":
             with open(f"./channels/{c}", "w") as f:
                 json_file = json.dumps({"ctx": msgp})
                 
